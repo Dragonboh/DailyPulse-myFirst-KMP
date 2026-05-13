@@ -66,5 +66,7 @@ android {
 
 dependencies {
     debugImplementation(libs.compose.uiTooling)
+    implementation(libs.coil.compose)
+    implementation(project(":shared"))
 }
 
