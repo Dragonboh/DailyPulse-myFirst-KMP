@@ -4,11 +4,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Article(
+data class ArticleRaw(
+    @SerialName("title")
     val title: String,
-    val description: String,
-    @SerialName("urlToImage")
-    val imageURL: String,
+    @SerialName("description")
+    val desc: String?,
     @SerialName("publishedAt")
-    val date: String
+    val date: String,
+    @SerialName("urlToImage")
+    val imageUrl: String?
 )

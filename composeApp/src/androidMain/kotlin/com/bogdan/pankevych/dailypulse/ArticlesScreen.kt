@@ -7,23 +7,25 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.unit.*
-import com.bogdan.pankevych.dailypulse.ArticlesScreen.*
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.*
 import androidx.compose.ui.text.style.*
 import coil.compose.AsyncImage
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Info
 
 
 @Composable
 fun ArticlesScreen(
+    onAboutButtonClick: () -> Unit,
     articlesViewModel: ArticlesViewModel,
 ) {
     val articlesState = articlesViewModel.articlesStateFlow.collectAsState()
 
     Column {
-        AppBar()
+        AppBar( onAboutButtonClick= onAboutButtonClick )
 
         if (articlesState.value.loading)
             Loader()
@@ -41,9 +43,19 @@ fun ArticlesScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun AppBar() {
+private fun AppBar(
+    onAboutButtonClick: () -> Unit,
+) {
     TopAppBar(
         title = { Text(text = "Articles") },
+        actions = {
+            IconButton(onClick = onAboutButtonClick) {
+                Icon(
+                    imageVector = Icons.Outlined.Info,
+                    contentDescription = "About Device Button"
+                )
+            }
+        }
     )
 }
 

@@ -10,13 +10,13 @@ import Shared
 
 @MainActor
 class ArticlesScreenVMWrapper: ObservableObject {
-    let kmmViewModel =  ArticlesViewModel()
+//    let kmmViewModel =  ArticlesViewModel()
     
     @Published var state: ArticlesState = ArticlesState(articles: [], error: nil, loading: true)
     
     func getState()  {
         Task {
-            for await state in kmmViewModel.articlesStateFlow {
+            for await state in ArticlesViewModel().articlesStateFlow {
                 self.state = state
             }
             

@@ -68,5 +68,8 @@ dependencies {
     debugImplementation(libs.compose.uiTooling)
     implementation(libs.coil.compose)
     implementation(project(":shared"))
+    implementation("androidx.compose.material:material:1.11.1")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
+    implementation("androidx.navigation:navigation-compose:2.9.8")
 }
 

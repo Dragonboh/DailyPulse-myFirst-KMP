@@ -1,4 +1,4 @@
-package com.bogdan.pankevych.dailypulse.ArticlesScreen
+package com.bogdan.pankevych.dailypulse
 
 import com.bogdan.pankevych.dailypulse.BaseViewModel
 //import kotlinx.coroutines.delay
@@ -15,6 +15,7 @@ class ArticlesViewModel: BaseViewModel() {
         get() = _articlesStateFlow
 
     init {
+       
         getArticles()
     }
 
@@ -41,11 +42,15 @@ class ArticlesViewModel: BaseViewModel() {
         )
 
         scope.launch {
-            delay(1500)
-            _articlesStateFlow.emit(ArticlesState(error = "WRONG WRONG"))
+            val articles = ArticlesUseCase(
+                service = ArticlesService()
+            ).getArticles()
+            
+//            delay(5000)
+//            _articlesStateFlow.emit(ArticlesState(error = "WRONG WRONG"))
 
-            delay(1500)
-            _articlesStateFlow.emit(ArticlesState(articles = mockArticles))
+//            delay(1500)
+            _articlesStateFlow.emit(ArticlesState(articles = articles))
         }
     }
 }

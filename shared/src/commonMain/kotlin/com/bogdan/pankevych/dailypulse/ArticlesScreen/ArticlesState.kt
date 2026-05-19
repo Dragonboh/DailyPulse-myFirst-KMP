@@ -1,4 +1,4 @@
-package com.bogdan.pankevych.dailypulse.ArticlesScreen
+package com.bogdan.pankevych.dailypulse
 
 class ArticlesState(
     val articles: List<Article> = listOf(),
